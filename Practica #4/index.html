@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNEKERS DUNK IT - Los Mejores Tenis de León</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #1a1a1a !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #007bff !important;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/snkrsdunkit.webp') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+        
+        .btn-hero {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #28a745;
+            margin: 10px 0;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            color: #1a1a1a;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .btn-buy {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .btn-buy:hover {
+            background: linear-gradient(135deg, #0056b3, #004085);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .feature-text {
+            color: #666666;
+            line-height: 1.6;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #203bb3 0%, #5894e2 100%);
+            color: white;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            background: rgba(255, 253, 253, 0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .newsletter-input:focus {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: none;
+            color: white;
+        }
+        
+        .btn-newsletter {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-newsletter:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px 0;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: #faf9f9;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #007bff;
+        }
+        
+        .social-links a {
+            color: #ccc;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #007bff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-basketball-ball "></i>SNEKERS DUNK IT
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-primary" href="#cart">
+                            <i class="fas fa-shopping-cart me-2"></i>Carrito
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Domina la Cancha</h1>
+                    <p class="hero-subtitle">Nosotros nos dedicamos a encontrar tu par ideal para que te sientas el rey de la cancha. No solo son un par de tenis dentro de la cancha son tu identidad - snkrsdunkit</p>
+                    <div class="d-flex gap-3">
+                        <a href="#products" class="btn btn-light btn-hero">
+                            <i class="fas fa-shopping-bag me-2"></i>Comprar Ahora
+                        </a>
+                        <a href="#categories" class="btn btn-outline-light btn-hero">
+                            <i class="fas fa-play me-2"></i>Ver Colección
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="img/snkrsdunkit.webp" 
+                         alt="Featured Shoes" class="img-fluid" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h4>Basquetbol</h4>
+                        <p>Máximo rendimiento en la cancha con tecnología de vanguardia</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h4>Running</h4>
+                        <p>Comodidad y velocidad para tus entrenamientos diarios</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h4>Entrenamiento</h4>
+                        <p>Estabilidad y soporte para tus rutinas de ejercicio</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <h4>Casual</h4>
+                        <p>Estilo y comodidad para el día a día, luce como nadie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://sneakernews.com/wp-content/uploads/2013/10/air-jordan-1-retro-high-og-bred-01.jpg" 
+                                 class="product-image w-100" alt="Air Jordan 1">
+                            <span class="product-badge">Nuevo</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Air Jordan 1 Retro High</h5>
+                            <p class="product-description">El icónico del basquetbol primer par de tenis que saco Michaell Jordan. Diseño clásico con tecnología moderna.</p>
+                            <div class="product-price">$1,299</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://tse2.mm.bing.net/th/id/OIP.s0KeY2GqA49J_PmFzS5aiwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+                                 class="product-image w-100" alt="Adidas Harden">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Adidas Harden Vol. 7</h5>
+                            <p class="product-description">Diseñados para James Harden. Máxima tracción y estabilidad en la cancha.</p>
+                            <div class="product-price">$1,199</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://tse3.mm.bing.net/th/id/OIP.ry1NHPQy_ZAVcsgldqmWKAHaFM?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+                                 class="product-image w-100" alt="Nike LeBron">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Nike LeBron 20</h5>
+                            <p class="product-description">Tenis de LeBron James con tecnología Zoom Air para poder y velocidad.</p>
+                            <div class="product-price">$1,399</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://tse3.mm.bing.net/th/id/OIP.c6cngAFT-tXX1sLnjKJCXgHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+                                 class="product-image w-100" alt="Under Armour Curry">
+                            <span class="product-badge">Oferta</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Curry Flow 10</h5>
+                            <p class="product-description">Tenis de Stephen Curry con tecnología Flow para máxima ligereza.</p>
+                            <div class="product-price">$1,099</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://sneakernews.com/wp-content/uploads/2020/11/Nike-Air-Max-270-DH0268_100-Release-Info-4.jpg" 
+                                 class="product-image w-100" alt="Nike Air Max">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Nike Air Max 270</h5>
+                            <p class="product-description">Tecnología Air Max para máximo confort y amortiguación en running.</p>
+                            <div class="product-price">$899</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://tse1.mm.bing.net/th/id/OIP.OqjJZ6IdkHNHLt7nCFavcQHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+                                 class="product-image w-100" alt="Adidas Ultraboost">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Adidas Ultraboost 22</h5>
+                            <p class="product-description">Tecnología Boost para energía reactiva en cada paso.</p>
+                            <div class="product-price">$1,099</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://th.bing.com/th/id/R.c348a6734b96eeb7743e01bc384a14b2?rik=ZB3vsjM3td7Osw&pid=ImgRaw&r=0" 
+                                 class="product-image w-100" alt="Puma RS-X">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Puma RS-X</h5>
+                            <p class="product-description">Estilo retro único con máximo confort para entrenamiento y casual.</p>
+                            <div class="product-price">$799</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="https://www.therunningcompany.com.au/wp-content/uploads/2022/06/1080.jpg" 
+                                 class="product-image w-100" alt="New Balance">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="product-title">Fresh Foam X 1080v12</h5>
+                            <p class="product-description">Tecnología Fresh Foam X para amortiguación superior en larga distancia.</p>
+                            <div class="product-price">$1,199</div>
+                            <button class="btn btn-buy">
+                                <i class="fas fa-shopping-cart me-2"></i>Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h5 class="feature-title">Envío Gratis</h5>
+                        <p class="feature-text">En compras mayores a $3,500 en todo México</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5 class="feature-title">Garantía 8 Días</h5>
+                        <p class="feature-text">Devolución gratuita si no estás satisfecho</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h5 class="feature-title">Soporte 24/7</h5>
+                        <p class="feature-text">Atención al cliente disponible todo el día</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h5 class="feature-title">Pagos Seguros</h5>
+                        <p class="feature-text">Múltiples métodos de pago disponibles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">¡Mantente Actualizado!</h2>
+                    <p class="mb-4">Suscríbete para recibir las últimas novedades, ofertas exclusivas y lanzamientos de productos.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control newsletter-input" placeholder="Tu correo electrónico">
+                            <button class="btn btn-newsletter" type="submit">
+                                <i class="fas fa-paper-plane me-2"></i>Suscribirse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="footer-title">
+                        <i class="fas fa-basketball-ball me-2"></i>SNEKERS DUNK IT
+                    </h5>
+                    <p class="text-muted">Los mejores tenis deportivos con tecnología de vanguardia. Rendimiento, estilo y calidad en cada producto.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/snkrsdunk_it/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Productos</h5>
+                    <a href="#" class="footer-link">Basquetbol</a>
+                    <a href="#" class="footer-link">Running</a>
+                    <a href="#" class="footer-link">Entrenamiento</a>
+                    <a href="#" class="footer-link">Casual</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Soporte</h5>
+                    <a href="#" class="footer-link">Centro de Ayuda</a>
+                    <a href="#" class="footer-link">Envíos</a>
+                    <a href="#" class="footer-link">Devoluciones</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Empresa</h5>
+                    <a href="#" class="footer-link">Acerca de</a>
+                    <a href="#" class="footer-link">Carreras</a>
+                    <a href="#" class="footer-link">Prensa</a>
+                    <a href="#" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Legal</h5>
+                    <a href="#" class="footer-link">Términos</a>
+                    <a href="#" class="footer-link">Privacidad</a>
+                    <a href="#" class="footer-link">Cookies</a>
+                    <a href="#" class="footer-link">Licencias</a>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: #333;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">© 2024 SportShoes Pro. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <img src="https://via.placeholder.com/200x30/333/fff?text=Payment+Methods" alt="Payment Methods" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn-buy').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('.product-title').textContent;
+                alert(`¡${productName} agregado al carrito!`);
+            });
+        });
+    </script>
+</body>
+</html>
